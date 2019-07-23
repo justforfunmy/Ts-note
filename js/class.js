@@ -18,6 +18,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Person = /** @class */ (function () {
     function Person(name) {
+        this.age = 30;
         //构造函数，实例化类的时候触发的方法
         this.name = name;
     }
@@ -37,12 +38,18 @@ var Person = /** @class */ (function () {
         this.sleep();
         console.log(this.name + ' hello');
     };
+    Person.print = function () {
+        //静态方法里不能直接调用类里的属性，可以调用静态属性
+        console.log('static ' + this.gender);
+    };
+    Person.gender = 'male';
     return Person;
 }());
 var p = new Person('king');
 p.run();
 p.setName('john');
 console.log(p.getName());
+Person.print();
 //ts继承 extends,super
 var Web = /** @class */ (function (_super) {
     __extends(Web, _super);
@@ -61,7 +68,64 @@ var Web = /** @class */ (function (_super) {
     };
     return Web;
 }(Person));
-var w = new Web('sara');
-w.run();
-w.work();
-w.say();
+// let w = new Web('sara')
+// w.run()
+// w.work()
+// w.say()
+//多态，父类定义一个方法不去实现，让继承它的子类去实现，每个子类有不同的实现,多态是继承的表现
+var Animal = /** @class */ (function () {
+    function Animal(name) {
+        this.name = name;
+    }
+    Animal.prototype.eat = function () {
+        console.log('eating');
+    };
+    return Animal;
+}());
+var Dog = /** @class */ (function (_super) {
+    __extends(Dog, _super);
+    function Dog(name) {
+        return _super.call(this, name) || this;
+    }
+    Dog.prototype.eat = function () {
+        console.log(this.name + ' is eatting meat');
+    };
+    return Dog;
+}(Animal));
+var Cat = /** @class */ (function (_super) {
+    __extends(Cat, _super);
+    function Cat(name) {
+        return _super.call(this, name) || this;
+    }
+    Cat.prototype.eat = function () {
+        console.log(this.name + ' is eatting fish');
+    };
+    return Cat;
+}(Animal));
+var dog = new Dog('dog');
+dog.eat();
+var cat = new Cat('cat');
+cat.eat();
+//抽象方法
+//抽象类提供其他类的基类，不能直接实例化
+//abstract关键字定义的抽象类和抽象方法，抽象类中的抽象方法不包含具体实现并且必须在派生类中实现
+//抽象方法只能放在抽象类中
+//抽象类和抽象方法用来定义标准
+var Animals = /** @class */ (function () {
+    function Animals(name) {
+        this.name = name;
+    }
+    return Animals;
+}());
+var Dogg = /** @class */ (function (_super) {
+    __extends(Dogg, _super);
+    function Dogg(name) {
+        return _super.call(this, name) || this;
+    }
+    Dogg.prototype.eat = function () {
+        console.log(this.name + ' eat bones');
+    };
+    return Dogg;
+}(Animal));
+var d = new Dogg('hdog');
+d.eat();
