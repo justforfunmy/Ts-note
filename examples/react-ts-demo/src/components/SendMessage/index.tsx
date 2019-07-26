@@ -19,22 +19,28 @@ const mapDispatchToProps=(dispatch:any)=>{
 
 interface IProps{
     sendMessage(params:Message):ChatState;
-    chat:ChatState
+    onSendMessage(idx:number):void;
+    chat:ChatState;
 }
 interface IState{
     val:string
 }
-class TestBar extends React.Component<IProps,IState>{
-    state:IState={
-        val:''
+class SendMessage extends React.Component<IProps,IState>{
+    constructor(props:any){
+        super(props);
+        this.state={
+            val:''
+        }
     }
-    handleClick=()=>{
+    
+    handleClick=():void=>{
         const message:Message={
             message:this.state.val,
             user:'123',
-            timestamp:123
+            timestamp:new Date().getTime()
         }
         this.props.sendMessage(message)
+        this.props.onSendMessage(0)
     }
     handleInput=(e:any)=>{
         e.persist()
@@ -50,24 +56,24 @@ class TestBar extends React.Component<IProps,IState>{
         }
     }
     render(){
-        const {chat} = this.props;
+        // const {chat} = this.props;
         return (
-            <div>
-                {
+            <div className='all-center' style={{marginTop:20}}>
+                {/* {
                     chat.messages.map((item,idx)=>{
                         return (
                             <div key={idx}>{item.message}</div>
                         )
                     })
-                }
+                } */}
                 <input placeholder='input message' value={this.state.val} onInput={this.handleInput} onChange={this.handleInput}/>
                 <button onClick={this.handleClick}>submit</button>
             </div>
         )
     }
     componentDidMount(){
-        console.log(this.test())
+        // console.log(this.test())
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(TestBar as any)
+export default connect(mapStateToProps,mapDispatchToProps)(SendMessage)
