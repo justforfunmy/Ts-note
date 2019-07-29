@@ -1,6 +1,5 @@
 export interface Message{
     user:string;
-    /** ertetet */
     message:string;
     timestamp:number;
 }
