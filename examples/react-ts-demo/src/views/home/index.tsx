@@ -9,8 +9,11 @@ interface IState{
     activeIndex:number
 }
 export default class Home extends React.Component<IProps,IState>{
-    state:IState={
-        activeIndex:0
+    constructor(props:IProps){
+        super(props)
+        this.state={
+            activeIndex:0
+        }
     }
     setIndex=(idx:number):void=>{
         this.setState({
