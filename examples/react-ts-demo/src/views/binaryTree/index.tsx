@@ -10,6 +10,8 @@ export default class PageBinaryTree extends React.Component{
     componentDidMount(){
         const arr = [6,3,5,2,4,7,11,34];
         const tree = new BinaryTree(arr);
+        tree.inOrder()
         console.log(tree)
+        
     }
 }
