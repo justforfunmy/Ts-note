@@ -13,8 +13,8 @@ export default class Index extends React.Component<IProps,IState>{
                 to:'/Home',
                 text:'Home'
             },{
-                to:'/BinaryTree',
-                text:'BinaryTree'
+                to:'/DataStructure',
+                text:'DataStructure'
             }]
         }
     }
