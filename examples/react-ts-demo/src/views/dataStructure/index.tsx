@@ -1,6 +1,7 @@
 import React from 'react';
 import BinaryTree from '../../entities/binaryTree/BinaryTree'
 import Stack from '../../entities/stack'
+import LinkedList from '../../entities/linkedList'
 
 export default class PageDataStructure extends React.Component{
     handleBinary=()=>{
@@ -34,12 +35,18 @@ export default class PageDataStructure extends React.Component{
         }
         return binaryString
     }
+    handleLinkedList=()=>{
+        let linkedList = new LinkedList();
+        linkedList.append(123)
+        console.log(linkedList)
+    }
     render(){
         return (
             <div>
                 <button onClick={this.handleBinary}>binary</button>
                 <button onClick={this.handleStack}>stack</button>
                 <div>{this.handleDivideBy2(125)}</div>
+                <button onClick={this.handleLinkedList}>linkedList</button>
             </div>
         )
     }
