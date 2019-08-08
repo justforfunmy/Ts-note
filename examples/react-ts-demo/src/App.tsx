@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './views/home'
 import ChatPage from './views/chatPage'
 import PageDataStructure from './views/dataStructure'
+import Algorithm from './views/algorithm'
 import Index from './views/Index'
 
 interface IProps { }
@@ -18,6 +19,7 @@ class App extends React.Component<IProps, IState>{
           <Route path='/Home' component={Home}></Route>
           <Route path='/ChatPage' component={ChatPage}></Route>
           <Route path='/DataStructure' component={PageDataStructure}></Route>
+          <Route path='/Algorithm' component={Algorithm}></Route>
         </div>
       </Router>
 

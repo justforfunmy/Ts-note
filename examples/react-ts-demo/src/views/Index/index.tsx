@@ -15,6 +15,9 @@ export default class Index extends React.Component<IProps,IState>{
             },{
                 to:'/DataStructure',
                 text:'DataStructure'
+            },{
+                to:'/Algorithm',
+                text:'Algorithm'
             }]
         }
     }
