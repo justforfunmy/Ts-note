@@ -14,25 +14,30 @@ export default class Algorithm extends React.Component {
         if (re > 214748364 || re < -214748364) return 0;
         return re
     }
-    subsets = (nums: number[]): any[] => {
-        let ws = [[]];
-        for (let i = 0; i < nums.length; ++i) {
-            for (let j = 0, len = ws.length; j < len; ++j) {
-                ws.push(ws[j].concat([nums[i]]));
+    handleFilter=()=>{
+        var removeDuplicates = function (nums:number[]) {
+            var cur = nums[0];
+            for (var i = 1; i < nums.length;) {
+                if (nums[i] === cur)
+                    nums.splice(i, 1);
+                else
+                    cur = nums[i++];
             }
-        }
-        return ws;
+            return nums.length
+        };
+        console.log(removeDuplicates([1,1,2,3,1]))
     }
     componentDidMount() {
-        console.log(this.subsets([1, 2, 3]))
+        
     }
     render() {
         return (
             <div>
                 <div>1.给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</div>
                 <button onClick={this.reserve.bind(this, 120)}>solution</button>
-                <div>给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。</div>
-                <button>solution</button>
+                <div>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+                不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</div>
+                <button onClick={this.handleFilter}>solution</button>
             </div>
         )
     }
