@@ -22,4 +22,4 @@ export default class Algorithm extends React.Component{
             </div>
         )
     }
-}
+} 
